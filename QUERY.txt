@@ -1,0 +1,14 @@
+Ολα τα ραντεβου του γιατρου με id 1
+SELECT * FROM calendar WHERE id_doc=1; 
+
+Ολα τα ραντεβου του γιατρου με id 1 και τον 4ο μήνα
+SELECT * FROM `calendar` WHERE id_doc=1 AND month=4; 
+
+Συνολικά το πλήθος τον ραντεβού του γιατρού με id=1
+SELECT COUNT(id) FROM calendar WHERE id_doc=1; 
+
+Πως να βάλουμε ραντεβου με τον γιατρο2 και τον ασθενη2
+INSERT INTO calendar(id_doc, id_pat, hour, day, month, year) VALUES (2,2,20,01,01,2023);
+
+Διαγραφή ραντεβου με αντιστοιχο τρόπο
+DELETE FROM calendar WHERE id_doc=2 AND id_pat=2 AND hour=20 AND day=01 AND month=01 AND year=2023;
