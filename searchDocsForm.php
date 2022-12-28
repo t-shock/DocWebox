@@ -8,9 +8,29 @@
 		
 		<h1 style="text-align:center">Define Your Search Terms</h1>
 		<form method="post" action="searchDB.php"> 
-			Location: <input type="text" name="loc">
+			<label for="Location">Choose a Location:</label>
+			<select name="locs" id="locs">
+				<?php 
+					$conn = new mysqli('localhost', 'root','', 'Demo') or die ('Cannot connect to db');
+					$result = $conn->query("SELECT DISTINCT loc FROM docs");
+					while ($row = $result->fetch_assoc()){
+						$loc = $row['loc']; 
+						echo '<option value="'.$loc.'">'.$loc.'</option>';
+					}
+				?>
+			 </select>
 			<br><br>
-			Expertise: <input type="text" name="exp">
+			<label for="Expertise">Choose a Profession:</label>
+			<select name="exp" id="exp">
+				<?php 
+					$conn = new mysqli('localhost', 'root','', 'Demo') or die ('Cannot connect to db');
+					$result = $conn->query("SELECT DISTINCT exp FROM docs");
+					while ($row = $result->fetch_assoc()){
+						$exp = $row['exp']; 
+						echo '<option value="'.$exp.'">'.$exp.'</option>';
+					}
+				?>
+			 </select>
 			<input type="submit" name="Select" value="Select"> 
 			<br><br>
 		</form>
