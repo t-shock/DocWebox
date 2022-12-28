@@ -14,7 +14,13 @@
 		
 		<?php
 						
-			$exp = $_POST['exp'];
+			if(empty($_POST["exp"])){
+				$exp = "";
+			}
+			else{
+				$exp = $_POST['exp'];
+			}
+
 			if(empty($_POST["loc"])){
 				$loc = "";
 			}

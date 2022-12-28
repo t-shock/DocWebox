@@ -13,6 +13,8 @@
 		<form method="post" action="searchDB.php"> 
 			<label for="Location">Choose a Location:</label>
 			<select name="loc" id="loc">
+				<option value="defaultLocation" disabled selected="selected">--Select a Location--</option>
+			
 				<?php 
 					$result = $conn->query("SELECT DISTINCT loc FROM docs ORDER BY loc");
 					while ($row = $result->fetch_assoc()){
@@ -24,6 +26,7 @@
 			<br><br>
 			<label for="Expertise">Choose a Profession:</label>
 			<select name="exp" id="exp">
+			<option value="defaultProfession" disabled selected="selected">--Select a Profession--</option>
 				<?php 
 					$result = $conn->query("SELECT DISTINCT exp FROM docs ORDER BY exp");
 					while ($row = $result->fetch_assoc()){
