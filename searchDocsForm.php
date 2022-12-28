@@ -1,3 +1,6 @@
+<?php
+	include "connect.php";
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -11,7 +14,6 @@
 			<label for="Location">Choose a Location:</label>
 			<select name="locs" id="locs">
 				<?php 
-					$conn = new mysqli('localhost', 'root','', 'Demo') or die ('Cannot connect to db');
 					$result = $conn->query("SELECT DISTINCT loc FROM docs");
 					while ($row = $result->fetch_assoc()){
 						$loc = $row['loc']; 
@@ -23,7 +25,6 @@
 			<label for="Expertise">Choose a Profession:</label>
 			<select name="exp" id="exp">
 				<?php 
-					$conn = new mysqli('localhost', 'root','', 'Demo') or die ('Cannot connect to db');
 					$result = $conn->query("SELECT DISTINCT exp FROM docs");
 					while ($row = $result->fetch_assoc()){
 						$exp = $row['exp']; 

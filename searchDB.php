@@ -1,3 +1,6 @@
+<?php
+	include "connect.php";
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -10,20 +13,7 @@
 	<body>
 		
 		<?php
-			
-			$servername = "localhost";
-			$username = "root";
-			$password = "";
-			$dbname = "Demo";
-	
-	
-			// Create connection
-			$conn = new mysqli($servername, $username, $password, $dbname);
-			// Check connection
-			if ($conn->connect_error) {
-				die("Connection failed: " . $conn->connect_error);
-			}
-			
+						
 			$exp = $_POST['exp'];
 			if(empty($_POST["loc"])){
 				$loc = "";
