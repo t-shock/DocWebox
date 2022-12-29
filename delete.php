@@ -11,8 +11,22 @@
     } else {
         echo "Error deleting record: " . $conn->error;
     }
-    echo "<a href='showAppointments.php'><button class='btn btn-primary'>GO BACK</button></a>";
     // Close the connection
     $conn->close();
 
 ?>
+<!DOCTYPE html>
+<html>
+	<head>
+         <style>
+		.blue-color {
+        	color:blue;
+   		 }
+		</style>
+        <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">    
+	</head>
+	<body>
+        <a href='showAppointments.php'><button class='btn btn-primary'><span class='bi bi-box-arrow-left blue-color'></span></button></a>
+	</body>
+</html>
