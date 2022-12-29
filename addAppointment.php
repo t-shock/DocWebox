@@ -21,6 +21,7 @@ include "connect.php";
 	</head>
 	<body>
         <div id ="tag">Επιλέξτε ιατρό:</div>
+        <form method="POST">
 		<?php
 			$sql = "SELECT id, fname, lname, exp, loc FROM docs";
 			$result = $conn->query($sql);
@@ -29,7 +30,8 @@ include "connect.php";
 			// output data of each row
 				while($row = $result->fetch_assoc()) {
 					echo "<tr><td>".$row["id"]."</td><td>".$row["fname"]."
-					".$row["lname"]."</td><td>".$row["exp"]."</td><td>".$row["loc"]."</td> <td> <input type='checkbox' class='radio' id='doc".$row["id"]."' name=".$row["id"]."></td></tr>";
+					".$row["lname"]."</td><td>".$row["exp"]."</td><td>".$row["loc"]."</td> 
+                    <td class='checkbox-group required'> <input type='checkbox' class='radio' id='doc".$row["id"]."' value=".$row["id"]." name='docid'></td></tr>";
 				}
 				echo "</table>";
 			} else {
@@ -39,7 +41,7 @@ include "connect.php";
 		?>
         <br>
         <div id ="tag">Επιλέξτε ημερομηνία και ώρα:</div>
-        <form>
+        
         <input type="date" id="date" name="date" max="2030-12-31" required>
             <input type="time" id="appt" name="appt"  min="09:00" max="19:00" value="09:00" step="3600" required>
             <br><br>
