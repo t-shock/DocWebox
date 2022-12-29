@@ -36,7 +36,7 @@ include "connect.php";
                     <td>"."<a href='delete.php?playerID=".$num."'><button class='btn btn-primary'><span class='bi bi-trash blue-color'></span></button></a>"."</td>
                     </tr>";
                 }
-				echo "</table> <br> <button type='button' id ='add'>Προσθήκη</button>";
+				echo "</table> <br> <a href='addAppointment.php'><button type='button' id ='add'>Προσθήκη</button>";
 			} else {
 				echo "0 results";
 			}
