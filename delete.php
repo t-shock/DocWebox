@@ -11,7 +11,7 @@
     } else {
         echo "Error deleting record: " . $conn->error;
     }
-
+    echo "<a href='showAppointments.php'><button class='btn btn-primary'>GO BACK</button></a>";
     // Close the connection
     $conn->close();
 
