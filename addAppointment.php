@@ -1,21 +1,6 @@
 <?php
 	include "connect.php";
-	$date = ""; 
-	$time = "";
-	$docid = "";
-	$patid = "2";
-	if (!empty($_GET['date']) && !empty($_GET['date']) && !empty($_GET['docid']) ) {
-		$date = $_GET['date'];
-		$time = $_GET['appt'];
-		$docid = $_GET['docid'];
-		$sql = "INSERT INTO calendar (id_doc, id_pat, time, date)
-		VALUES ('$docid', '$patid', '$time', '$date')";
-		if ($conn->query($sql) === TRUE) {
-			echo "New record created successfully";
-		} else {
-			echo "Error: " . $sql . "<br>" . $conn->error;
-		}
-	}
+
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +22,7 @@
 	</head>
 	<body>
         <div id ="tag">Επιλέξτε ιατρό:</div>
-        <form name="form" action="" method="get"> 
+        <form name="form" action="submit.php" method="post"> 
 			<?php
 				$sql = "SELECT id, fname, lname, exp, loc FROM docs";
 				$result = $conn->query($sql);
