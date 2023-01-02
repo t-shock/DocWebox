@@ -1,5 +1,21 @@
 <?php
-include "connect.php";
+	include "connect.php";
+	$date = ""; 
+	$time = "";
+	$docid = "";
+	$patid = "2";
+	if (!empty($_GET['date']) && !empty($_GET['date']) && !empty($_GET['docid']) ) {
+		$date = $_GET['date'];
+		$time = $_GET['appt'];
+		$docid = $_GET['docid'];
+		$sql = "INSERT INTO calendar (id_doc, id_pat, time, date)
+		VALUES ('$docid', '$patid', '$time', '$date')";
+		if ($conn->query($sql) === TRUE) {
+			echo "New record created successfully";
+		} else {
+			echo "Error: " . $sql . "<br>" . $conn->error;
+		}
+	}
 ?>
 
 <!DOCTYPE html>
@@ -21,31 +37,31 @@ include "connect.php";
 	</head>
 	<body>
         <div id ="tag">Επιλέξτε ιατρό:</div>
-        <form method="POST">
-		<?php
-			$sql = "SELECT id, fname, lname, exp, loc FROM docs";
-			$result = $conn->query($sql);
-			if ($result->num_rows > 0) {
-				echo "<table><tr><th>ID</th><th>Name</th><th>Expertise</th><th>Location</th><th>Επιλογή</th></tr>";
-			// output data of each row
-				while($row = $result->fetch_assoc()) {
-					echo "<tr><td>".$row["id"]."</td><td>".$row["fname"]."
-					".$row["lname"]."</td><td>".$row["exp"]."</td><td>".$row["loc"]."</td> 
-                    <td class='checkbox-group required'> <input type='checkbox' class='radio' id='doc".$row["id"]."' value=".$row["id"]." name='docid'></td></tr>";
+        <form name="form" action="" method="get"> 
+			<?php
+				$sql = "SELECT id, fname, lname, exp, loc FROM docs";
+				$result = $conn->query($sql);
+				if ($result->num_rows > 0) {
+					echo "<table><tr><th>ID</th><th>Name</th><th>Expertise</th><th>Location</th><th>Επιλογή</th></tr>";
+				// output data of each row
+					while($row = $result->fetch_assoc()) {
+						echo "<tr><td>".$row["id"]."</td><td>".$row["fname"]."
+						".$row["lname"]."</td><td>".$row["exp"]."</td><td>".$row["loc"]."</td> 
+						<td class='checkbox-group required'> <input type='checkbox' class='radio' id='doc".$row["id"]."' value=".$row["id"]." name='docid'></td></tr>";
+					}
+					echo "</table>";
+				} else {
+					echo "0 results";
 				}
-				echo "</table>";
-			} else {
-				echo "0 results";
-			}
-			$conn->close();
-		?>
-        <br>
-        <div id ="tag">Επιλέξτε ημερομηνία και ώρα:</div>
-        
-        <input type="date" id="date" name="date" max="2030-12-31" required>
+				$conn->close();
+			?>
+			<br>
+			<div id ="tag">Επιλέξτε ημερομηνία και ώρα:</div>
+			
+			<input type="date" id="date" name="date" max="2030-12-31" required>
             <input type="time" id="appt" name="appt"  min="09:00" max="19:00" value="09:00" step="3600" required>
             <br><br>
-            <input type="submit" class='btn btn-primary' value="Submit"/> 
+            <input type="submit" name="submit" value="Submit">
         </form>
 
 	</body>

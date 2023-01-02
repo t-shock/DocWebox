@@ -20,10 +20,10 @@ include "connect.php";
 	<body>
 
 		<?php
-			$sql = "SELECT id,id_doc, hour, day, month,year FROM calendar WHERE id_pat = 1";
+			$sql = "SELECT id,id_doc, time, date FROM calendar WHERE id_pat = 2";
 			$result = $conn->query($sql);
 			if ($result->num_rows > 0) {
-				echo "<table><tr><th>Doctor</th><th>Date</th></tr>";
+				echo "<table><tr><th>Doctor</th><th>Time</th><th>Date</th></tr>";
 			// output data of each row
 				while($row = $result->fetch_assoc()) {
 					$num = $row["id"];
@@ -32,7 +32,8 @@ include "connect.php";
 			        $result2 = $conn->query($sql2);
                     $row2 = $result2->fetch_assoc();
 					echo "<tr><td>".$row2["fname"]." ".$row2["lname"]."</td>
-                    <td>".$row["day"]."/".$row["month"]."/".$row["year"]."</td>
+					<td>".$row["time"]."</td>
+                    <td>".$row["date"]."</td>
                     <td>"."<a href='delete.php?playerID=".$num."'><button class='btn btn-primary'><span class='bi bi-trash blue-color'></span></button></a>"."</td>
                     </tr>";
                 }
