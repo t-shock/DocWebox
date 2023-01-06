@@ -20,7 +20,9 @@ include "connect.php";
 	<body>
 
 		<?php
-			$sql = "SELECT id,id_doc, time, date FROM calendar WHERE id_pat = 2";
+			session_start();
+			$patid = $_SESSION['patid'];
+			$sql = "SELECT id,id_doc, time, date FROM calendar WHERE id_pat = $patid";
 			$result = $conn->query($sql);
 			if ($result->num_rows > 0) {
 				echo "<table><tr><th>Doctor</th><th>Time</th><th>Date</th></tr>";
@@ -37,11 +39,12 @@ include "connect.php";
                     <td>"."<a href='delete.php?playerID=".$num."'><button class='btn btn-primary'><span class='bi bi-trash blue-color'></span></button></a>"."</td>
                     </tr>";
                 }
-				echo "</table> <br> <a href='addAppointment.php'><button type='button' id ='add'>Προσθήκη</button>";
+				echo "</table> <br> <a href='addAppointment.php'><button type='button' id ='add'>Προσθήκη</button><a href='welcome.php'><button type='button' id ='add'>Επιστροφή στην αρχική σελίδα</button>
+				";
 			} else {
 				echo "0 results";
 			}
 			$conn->close();
 		?>
-	</body>
+		</body>
 </html>

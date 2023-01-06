@@ -6,9 +6,14 @@ $(document).ready(function(){
     var today = new Date().toISOString().split('T')[0];
     document.getElementsByName("date")[0].setAttribute('min', today);
     document.getElementsByName("date")[0].setAttribute('value', today);
-    document.getElementsByName("submit")[0].addEventListener("click", function (ev) {
-        if(!$('td.checkbox-group.required :checkbox:checked').length > 0){
-            alert("check a doctor first");
-        }
-    });
+
 });
+function validation() {
+    if ($('td.checkbox-group.required :checkbox:checked').length > 0) {
+        return true;
+    } else {
+        alert('check a doctor first');
+        return false;
+    }
+    
+  }

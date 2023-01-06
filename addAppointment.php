@@ -1,6 +1,5 @@
 <?php
 	include "connect.php";
-
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +13,7 @@
                 color:green;
             }
 		</style>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
         <script src="addAppointment.js" type="text/javascript"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
@@ -22,7 +21,7 @@
 	</head>
 	<body>
         <div id ="tag">Επιλέξτε ιατρό:</div>
-        <form name="form" action="submit.php" method="post"> 
+        <form name="form" action="submit.php" onsubmit="return validation()" method="post"> 
 			<?php
 				$sql = "SELECT id, fname, lname, exp, loc FROM docs";
 				$result = $conn->query($sql);
@@ -48,6 +47,7 @@
             <br><br>
             <input type="submit" name="submit" value="Submit">
         </form>
-
+		<a href='welcome.php'><button type='button' id ='add'>Επιστροφή στην αρχική σελίδα</button>
+	
 	</body>
 </html>

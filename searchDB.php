@@ -79,5 +79,6 @@
 				$conn->close();
 			}
 		?>
+		<a href='welcome.php'><button type='button' id ='add'>Επιστροφή στην αρχική σελίδα</button>
 	</body>
 </html>

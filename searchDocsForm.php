@@ -41,5 +41,7 @@
 		<?php
 			echo '<body style="background-color:rgb(207,185,151)">'
 		?>
+		<a href='welcome.php'><button type='button' id ='add'>Επιστροφή στην αρχική σελίδα</button>
+	
 	</body>
 </html>
