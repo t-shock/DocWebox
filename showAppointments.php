@@ -39,11 +39,11 @@ include "connect.php";
                     <td>"."<a href='delete.php?playerID=".$num."'><button class='btn btn-primary'><span class='bi bi-trash blue-color'></span></button></a>"."</td>
                     </tr>";
                 }
-				echo "</table> <br> <a href='addAppointment.php'><button type='button' id ='add'>Προσθήκη</button><a href='welcome.php'><button type='button' id ='add'>Επιστροφή στην αρχική σελίδα</button>
-				";
+				echo "</table>"; 
 			} else {
-				echo "0 results";
+				echo "Δεν Έχετε Προγραμματίσει Κανένα Ραντεβού";
 			}
+			echo "<br> <a href='addAppointment.php'><button type='button' id ='add'>Προσθήκη</button><a href='welcome.php'><button type='button' id ='add'>Επιστροφή στην αρχική σελίδα</button>";
 			$conn->close();
 		?>
 		</body>

@@ -46,6 +46,9 @@
 							var filteredRows = $('#tb td:contains("' + filterValue1 + '")').parent();
 							filteredRows.add('#tb td:contains("' + filterValue2 + '")').parent().show();
 						}
+						if (filteredRows.length == 0) {
+							$("#noResults").html("Τα Φίλτρα Αναζήτης Σης Δεν Αντιστοιχούν Σε Κάποιον Ιατρό");
+    					}
 					});
 				});
 		</script>
@@ -82,6 +85,7 @@
 			 <button id="filterButton">Search</button>
 		</div>
         <form name="form" action="submit.php" onsubmit="return validation()" method="post"> 
+			<div id="noResults"> </div>
 			<?php
 				$sql = "SELECT id, fname, lname, exp, loc FROM docs";
 				$result = $conn->query($sql);
