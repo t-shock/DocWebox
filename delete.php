@@ -7,9 +7,9 @@
     // Delete the row from the database
     $sql = "DELETE FROM calendar WHERE id = $id";
         if ($conn->query($sql) === TRUE) {
-        echo "Record deleted successfully";
+        echo "Επιτυχής διαγραφή";
     } else {
-        echo "Error deleting record: " . $conn->error;
+        echo "Error deleting record: " . $conn;
     }
     // Close the connection
     $conn->close();

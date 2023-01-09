@@ -50,17 +50,17 @@ foreach ($resultsFromDB as $event) {
 	<body>
     <div class="container">
     <br/>
-    <div id="welcome">Welcome <?php echo $name?></div>
+    <div id="welcome">Καλωσήρθατε <?php echo $name?></div>
     <br/>
     <p>Τι θέλετε να κανετε;</p>
-    <div id="showDocs"><a href="showDocs.php"><input type="button" value="Show all doctors"></a></div>
-    <div id="SearchDocs"><a href="searchDocsForm.php"><input type="button" value="Search a doctor"></a></div>
+    <div id="showDocs"><a href="showDocs.php"><input type="button" value="Προβολή γιατρών"></a></div>
+    <div id="SearchDocs"><a href="searchDocsForm.php"><input type="button" value="Αναζήτηση γιατρού"></a></div>
     <?php
         session_start();
         $_SESSION['patid'] = $patid;
-        echo "<div id='showAppointments'><a href='showAppointments.php'><input type='button' value='See your appointments'></a></div>"; 
+        echo "<div id='showAppointments'><a href='showAppointments.php'><input type='button' value='Προβολή προσωπικών ραντεβού'></a></div>"; 
     ?>
-    <a href='addAppointment.php'><button type='button' id ='add'>Προσθήκη</button>
+    <a href='addAppointment.php'><button type='button' id ='add'>Προσθήκη ραντεβού</button>
     </div>
 </body>
 </html>

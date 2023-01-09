@@ -19,7 +19,7 @@ include "connect.php";
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
 		<script>
 			$(document).ready(function(){
-				$('.delete').attr("onclick","return confirm('Are you sure you want to delete this item? The doctor will be informed');");
+				$('.delete').attr("onclick","return confirm('Θέλετε σίγουρα να διαγράψετε το ραντεβού; Θα ενημερώσουμε τον γιατρό');");
 			});
 		</script>
 	</head>
@@ -35,7 +35,7 @@ include "connect.php";
 			$sql = "SELECT id,id_doc, time, date FROM calendar WHERE id_pat = $patid";
 			$result = $conn->query($sql);
 			if ($result->num_rows > 0) {
-				echo "<table class='table table bordered'><tr><th>Doctor</th><th>Time</th><th>Date</th><th>Delete Appointments</th></tr>";
+				echo "<table class='table table bordered'><tr><th>Όνομα</th><th>Ώρα</th><th>Ημερομινία</th><th>Διαγραφή ραντεβού</th></tr>";
 			// output data of each row
 				while($row = $result->fetch_assoc()) {
 					$num = $row["id"];

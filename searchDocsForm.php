@@ -46,10 +46,10 @@
 		<div class="container">
 			<br/>
 			<a href='welcome.php'><button type='button' id ='add'>Επιστροφή στην αρχική σελίδα</button> </a>
-			<h2 align="center">Search a doctor</h2><br/>
+			<h2 align="center">Αναζήτηση γιατρού</h2><br/>
 			<div class="form-group">
 				<div class="input-group">
-					<input type="text" name="mysearch" id="mysearch" placeholder="Enter name, surname, specialisation or location" class="form-control" />
+					<input type="text" name="mysearch" id="mysearch" placeholder="Εισάγετε όνομα, επίθετο, ειδικότητα ή περιοχή" class="form-control" />
 					<span class="input-group-addon"></span>
 				</div>
 			</div>

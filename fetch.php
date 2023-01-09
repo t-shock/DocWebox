@@ -27,10 +27,10 @@ if(mysqli_num_rows($result) > 0){
   <div class="table-responsive">
    <table class="table table bordered">
     <tr>
-     <th>First</th>
-     <th>Last</th>
-     <th>Specialisation</th>
-     <th>Location</th>
+     <th>Όνομα</th>
+     <th>Επίθετο</th>
+     <th>Ειδικότητα</th>
+     <th>Περιοχή</th>
     </tr>
  ';
  while($row = mysqli_fetch_array($result)){
@@ -46,7 +46,7 @@ if(mysqli_num_rows($result) > 0){
  echo $output;
 }
 else{
- echo '<span class="text-danger">Data Not Found</span>';
+ echo '<span class="text-danger">Δεν βρέθηκε</span>';
 }
 
 ?>

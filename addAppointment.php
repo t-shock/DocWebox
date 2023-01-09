@@ -48,7 +48,7 @@
 							filteredRows.add('#tb td:contains("' + filterValue2 + '")').parent().show();
 						}
 						if (filteredRows.length == 0) {
-							$("#noResults").html("<br>Τα Φίλτρα Αναζήσης Δεν Αντιστοιχούν Σε Κάποιον Ιατρό");
+							$("#noResults").html("<br>Τα Φίλτρα Αναζήτησης Δεν Αντιστοιχούν Σε Κάποιον Ιατρό");
     					}
 					});
 				});
@@ -64,9 +64,9 @@
 		<div id ="tag">Επιλέξτε ιατρό:</div>
 		<div>Παραθέστε Φίλτρα Αναζήτησης:</div>
 		<div id = "searchTerms">
-			<label for="Expertise">Choose a Profession:</label>
+			<label for="Expertise">Επιλέξτε ειδικότητα:</label>
 			<select name="exp" id="exp">
-				<option value="">ALL</option>
+				<option value="">Όλα</option>
 					<?php 
 						$result = $conn->query("SELECT DISTINCT exp FROM docs ORDER BY exp");
 						while ($row = $result->fetch_assoc()){
@@ -76,9 +76,9 @@
 					?>
 			 </select>
 			 <br>
-			 <label for="Location">Choose a Location:</label>
+			 <label for="Location">Επιλέξτε περιοχή:</label>
 			 <select name="loc" id="loc">
-				<option value="">ALL</option>
+				<option value="">Όλα</option>
 				<?php 
 					$result = $conn->query("SELECT DISTINCT loc FROM docs ORDER BY loc");
 					while ($row = $result->fetch_assoc()){
@@ -87,7 +87,7 @@
 					}
 				?>
 			 </select>	
-			 <button id="filterButton">Search</button>
+			 <button id="filterButton">Αναζήτηση</button>
 		</div>
         <form name="form" action="submit.php" onsubmit="return validation()" method="post"> 
 			<div id="noResults"> </div>
@@ -95,7 +95,7 @@
 				$sql = "SELECT id, fname, lname, exp, loc FROM docs";
 				$result = $conn->query($sql);
 				if ($result->num_rows > 0) {
-					echo "<div class='table-responsive'><table class='table table bordered' id='tb'><tr><th>Name</th><th>Expertise</th><th>Location</th><th>Επιλογή</th></tr>";
+					echo "<div class='table-responsive'><table class='table table bordered' id='tb'><tr><th>Όνομα</th><th>Ειδικότητα</th><th>Περιοχή</th><th>Επιλογή</th></tr>";
 				// output data of each row
 					while($row = $result->fetch_assoc()) {
 						echo "<tr><td>".$row["fname"]."
@@ -115,7 +115,7 @@
 			<p>Ώρες εργασίας: 09:00-19:00</p>
 			<p>Παρακαλούμε επιλέξτε ραντεβού ανά ώρα</p>
 			<br>
-            <input type="submit" name="submit" value="Submit">
+            <input type="submit" name="submit" value="Επικύρωση">
         </form>
 		
 	</div>
