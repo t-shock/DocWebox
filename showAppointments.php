@@ -16,16 +16,26 @@ include "connect.php";
 		</style>
         <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">    
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+		<script>
+			$(document).ready(function(){
+				$('.delete').attr("onclick","return confirm('Are you sure you want to delete this item? The doctor will be informed');");
+			});
+		</script>
 	</head>
 	<body>
-
+	<div class="container">
+	<br/>
+	<a href='welcome.php'><button type='button' id ='add'>Επιστροφή στην αρχική σελίδα</button></a>
+	<div class='table-responsive'>
+   <table class="table table bordered">
 		<?php
 			session_start();
 			$patid = $_SESSION['patid'];
 			$sql = "SELECT id,id_doc, time, date FROM calendar WHERE id_pat = $patid";
 			$result = $conn->query($sql);
 			if ($result->num_rows > 0) {
-				echo "<table><tr><th>Doctor</th><th>Time</th><th>Date</th></tr>";
+				echo "<table class='table table bordered'><tr><th>Doctor</th><th>Time</th><th>Date</th><th>Delete Appointments</th></tr>";
 			// output data of each row
 				while($row = $result->fetch_assoc()) {
 					$num = $row["id"];
@@ -36,15 +46,15 @@ include "connect.php";
 					echo "<tr><td>".$row2["fname"]." ".$row2["lname"]."</td>
 					<td>".$row["time"]."</td>
                     <td>".$row["date"]."</td>
-                    <td>"."<a href='delete.php?playerID=".$num."'><button class='btn btn-primary'><span class='bi bi-trash blue-color'></span></button></a>"."</td>
+                    <td class='text-center'>"."<a href='delete.php?playerID=".$num."' class = delete><button class='btn btn-primary'><span class='bi bi-trash text-danger'></span></button></a>"."</td>
                     </tr>";
                 }
 				echo "</table>"; 
 			} else {
 				echo "Δεν Έχετε Προγραμματίσει Κανένα Ραντεβού";
 			}
-			echo "<br> <a href='addAppointment.php'><button type='button' id ='add'>Προσθήκη</button><a href='welcome.php'><button type='button' id ='add'>Επιστροφή στην αρχική σελίδα</button>";
 			$conn->close();
 		?>
+		</div>
 		</body>
 </html>

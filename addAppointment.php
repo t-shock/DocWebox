@@ -16,6 +16,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
         <script src="addAppointment.js" type="text/javascript"></script>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
 		
 		<script>
 				$(document).ready(function() {
@@ -47,7 +48,7 @@
 							filteredRows.add('#tb td:contains("' + filterValue2 + '")').parent().show();
 						}
 						if (filteredRows.length == 0) {
-							$("#noResults").html("Τα Φίλτρα Αναζήτης Σης Δεν Αντιστοιχούν Σε Κάποιον Ιατρό");
+							$("#noResults").html("<br>Τα Φίλτρα Αναζήσης Δεν Αντιστοιχούν Σε Κάποιον Ιατρό");
     					}
 					});
 				});
@@ -56,6 +57,10 @@
 
 	</head>
 	<body>
+	<div class="container">
+	<br/>
+	<a href='welcome.php'><button type='button' id ='add'>Επιστροφή στην αρχική σελίδα</button></a>
+	<br/><br/>
 		<div id ="tag">Επιλέξτε ιατρό:</div>
 		<div>Παραθέστε Φίλτρα Αναζήτησης:</div>
 		<div id = "searchTerms">
@@ -90,7 +95,7 @@
 				$sql = "SELECT id, fname, lname, exp, loc FROM docs";
 				$result = $conn->query($sql);
 				if ($result->num_rows > 0) {
-					echo "<table id='tb'><tr><th>Name</th><th>Expertise</th><th>Location</th><th>Επιλογή</th></tr>";
+					echo "<div class='table-responsive'><table class='table table bordered' id='tb'><tr><th>Name</th><th>Expertise</th><th>Location</th><th>Επιλογή</th></tr>";
 				// output data of each row
 					while($row = $result->fetch_assoc()) {
 						echo "<tr><td>".$row["fname"]."
@@ -103,15 +108,16 @@
 				}
 				$conn->close();
 			?>
-			<br>
 			<div id ="tag">Επιλέξτε ημερομηνία και ώρα:</div>
 			
 			<input type="date" id="date" name="date" max="2030-12-31" required>
             <input type="time" id="appt" name="appt"  min="09:00" max="19:00" value="09:00" step="3600" required>
-            <br><br>
+			<p>Ώρες εργασίας: 09:00-19:00</p>
+			<p>Παρακαλούμε επιλέξτε ραντεβού ανά ώρα</p>
+			<br>
             <input type="submit" name="submit" value="Submit">
         </form>
-		<a href='welcome.php'><button type='button' id ='add'>Επιστροφή στην αρχική σελίδα</button>
-	
+		
+	</div>
 	</body>
 </html>

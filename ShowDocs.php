@@ -10,13 +10,19 @@ include "connect.php";
 			border: 1px solid black;
 			}
 		</style>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+		
 	</head>
 	<body>
+	<div class="container">
+	<br/>
+	<a href='welcome.php'><button type='button' id ='add'>Επιστροφή στην αρχική σελίδα</button></a>
+	<br/><br/>
 		<?php
 			$sql = "SELECT id, fname, lname, exp, loc FROM docs";
 			$result = $conn->query($sql);
 			if ($result->num_rows > 0) {
-				echo "<table><tr><th>ID</th><th>Name</th><th>Expertise</th><th>Location</th></tr>";
+				echo "<div class='table-responsive'><table class='table table bordered'><tr><th>ID</th><th>Name</th><th>Expertise</th><th>Location</th></tr>";
 			// output data of each row
 				while($row = $result->fetch_assoc()) {
 					echo "<tr><td>".$row["id"]."</td><td>".$row["fname"]."
@@ -28,7 +34,6 @@ include "connect.php";
 			}
 			$conn->close();
 		?>
-		<a href='welcome.php'><button type='button' id ='add'>Επιστροφή στην αρχική σελίδα</button>
-	
+	</div>
 	</body>
 </html>

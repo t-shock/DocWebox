@@ -12,7 +12,8 @@ foreach ($resultsFromDB as $event) {
 <html>
 	<head>
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+		
     <script>
         $("document").ready(function(){
             // $("#welcome").append("Welcome "$name);
@@ -47,7 +48,11 @@ foreach ($resultsFromDB as $event) {
     </script>
 	</head>
 	<body>
+    <div class="container">
+    <br/>
     <div id="welcome">Welcome <?php echo $name?></div>
+    <br/>
+    <p>Τι θέλετε να κανετε;</p>
     <div id="showDocs"><a href="showDocs.php"><input type="button" value="Show all doctors"></a></div>
     <div id="SearchDocs"><a href="searchDocsForm.php"><input type="button" value="Search a doctor"></a></div>
     <?php
@@ -56,5 +61,6 @@ foreach ($resultsFromDB as $event) {
         echo "<div id='showAppointments'><a href='showAppointments.php'><input type='button' value='See your appointments'></a></div>"; 
     ?>
     <a href='addAppointment.php'><button type='button' id ='add'>Προσθήκη</button>
+    </div>
 </body>
 </html>
