@@ -12,55 +12,76 @@ foreach ($resultsFromDB as $event) {
 <html>
 	<head>
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
-		
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script>
-        $("document").ready(function(){
-            // $("#welcome").append("Welcome "$name);
-            
-            // $.ajax({
-            //     type: "GET",
-            //     url: "patNameFromDB.php",
-            //     dataType: "html",                  
-            //     success: function(name){                    
-            //         $("#welcome").append(name);
-                
-            //     }
-            // });
-            // var request;
-            // if (window.XMLHttpRequest) {
-            //     request = new XMLHttpRequest();
-            // } else {
-            //     request = new ActiveXObject("Microsoft.XMLHTTP");
-                
-            // }
-            
-            // request.open('GET', 'fetchPatData.php');
+		$(document).ready(function(){
 
+			load_data();
 
-            // request.onreadystatechange = function() {
-            //     if ((request.readyState===4) && (request.status===200)) {
-            //         $("#welcome").append(request.responseText);
-            //     }
-            // }
-            // request.send();
-        });
-    </script>
+			function load_data(input)
+			{
+			$.ajax({
+			url:"fetchDataFromSearching.php",
+			method:"POST",
+			data:{input},
+			success:function(data)
+			{
+				$('#showdata').html(data);
+			}
+			});
+			}
+						
+			$('#mysearch').keyup(function(){
+				var search = $(this).val();
+				if(search != ''){
+					load_data(search);
+				}
+				else{
+					load_data();
+					//$('#showdata').css('display','none');
+				}
+				});
+		});
+</script>
 	</head>
 	<body>
+
+
     <div class="container">
-    <br/>
-    <div id="welcome">Καλωσήρθατε <?php echo $name?></div>
-    <br/>
-    <p>Τι θέλετε να κανετε;</p>
-    <div id="showDocs"><a href="showDocs.php"><input type="button" value="Προβολή γιατρών"></a></div>
-    <div id="SearchDocs"><a href="searchDocsForm.php"><input type="button" value="Αναζήτηση γιατρού"></a></div>
-    <?php
-        session_start();
-        $_SESSION['patid'] = $patid;
-        echo "<div id='showAppointments'><a href='showAppointments.php'><input type='button' value='Προβολή προσωπικών ραντεβού'></a></div>"; 
-    ?>
-    <a href='addAppointment.php'><button type='button' id ='add'>Προσθήκη ραντεβού</button>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">DocWebox</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" aria-current="page" href="welcome.php">Αρχική</a>
+                    <a class="nav-item nav-link" href="showDocs.php">Προβολή γιατρών</a>
+                    <a class="nav-item nav-link" href="addAppointment.php">Προσθήκη ραντεβού</a>
+                    <?php
+                        session_start();
+                        $_SESSION['patid'] = $patid;
+                        echo "<a class='nav-item nav-link' href='showAppointments.php'>Προβολή προσωπικών ραντεβού</a>"; 
+                    ?>
+                    <div class="nav-item nav-link disabled" id="welcome">Καλωσήρθατε <?php echo $name?>.    Δεν είστε ο <?php echo $name?>;</div>
+                    <a class="nav-item nav-link" href="">Σύνδεση χρήστη</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <h2 align="center">Αναζήτηση γιατρού</h2><br/>
+	<div class="form-group">
+		<div class="input-group">
+			<input type="text" name="mysearch" id="mysearch" placeholder="Εισάγετε όνομα, επίθετο, ειδικότητα ή περιοχή" class="form-control" />
+			<span class="input-group-addon"></span>
+		</div>
+	</div>
+	<br />
+	<div id="showdata"></div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>

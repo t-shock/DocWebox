@@ -14,53 +14,47 @@
             }
 		</style>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
         <script src="addAppointment.js" type="text/javascript"></script>
-		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
-		
-		<script>
-				$(document).ready(function() {
-					$('#exp, #loc').change(function() {
-						// Get the filter values from the dropdowns
-						var filterValue1 = $('#exp').val();
-						var filterValue2 = $('#loc').val();
-						// Hide all table rows
-						$('#tb tr').hide();
-						// Show the rows that contain either or both filter values
-						if (filterValue1 == '' && filterValue2 == '') {
-						// Show all rows
-							$('#tb tr').show();
-						} else if (filterValue1 && filterValue2) {
-							// Show the rows that contain both filter values
-							var filteredRows = $('#tb td:contains("' + filterValue1 + '")').parent().filter(function() {
-								return $(this).find('td:contains("' + filterValue2 + '")').length > 0;
-							});
-							filteredRows.show();
-						} else if (filterValue1 == '') {
-							// Show the rows that contain the second filter value
-							$('#tb td:contains("' + filterValue2 + '")').parent().show();
-						} else if (filterValue2 == '') {
-							// Show the rows that contain the first filter value
-							$('#tb td:contains("' + filterValue1 + '")').parent().show();
-						} else {
-							// Show the rows that contain either filter value
-							var filteredRows = $('#tb td:contains("' + filterValue1 + '")').parent();
-							filteredRows.add('#tb td:contains("' + filterValue2 + '")').parent().show();
-						}
-						if (filteredRows.length == 0) {
-							$("#noResults").html("<br>Τα Φίλτρα Αναζήτησης Δεν Αντιστοιχούν Σε Κάποιον Ιατρό");
-    					}
-					});
-				});
-		</script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+		<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
 	</head>
 	<body>
 	<div class="container">
-	<br/>
-	<a href='welcome.php'><button type='button' id ='add'>Επιστροφή στην αρχική σελίδα</button></a>
-	<br/><br/>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">DocWebox</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+				<div class="navbar-nav">
+				<a class="nav-item nav-link " href="welcome.php">Αρχική</a>
+				<a class="nav-item nav-link " href="showDocs.php">Προβολή γιατρών</a>
+				<a class="nav-item nav-link active" aria-current="page" href="addAppointment.php">Προσθήκη ραντεβού</a>
+				<?php
+					session_start();
+					$patid = $_SESSION['patid'];
+					$fetchPatData = 'SELECT fname FROM patients WHERE id='.$patid;
+				$result = $conn->query($fetchPatData);
+				$resultsFromDB = $result->fetch_all(MYSQLI_ASSOC);
+				foreach ($resultsFromDB as $event) {
+					$name = $event['fname'];
+				}
+					$fetchPatData = 'SELECT fname FROM patients WHERE id='.$patid;
+				$result = $conn->query($fetchPatData);
+				$resultsFromDB = $result->fetch_all(MYSQLI_ASSOC);
+				foreach ($resultsFromDB as $event) {
+					$name = $event['fname'];
+				}
+					echo "<a class='nav-item nav-link' href='showAppointments.php'>Προβολή προσωπικών ραντεβού</a>"; 
+				?>
+				<div class="nav-item nav-link disabled" id="welcome">Καλωσήρθατε <?php echo $name?>.    Δεν είστε ο <?php echo $name?>;</div>
+				<a class="nav-item nav-link" href="">Σύνδεση χρήστη</a>
+				</div>
+			</div>
+		</div>
+    </nav>
 		<div id ="tag">Επιλέξτε ιατρό:</div>
 		<div>Παραθέστε Φίλτρα Αναζήτησης:</div>
 		<div id = "searchTerms">
@@ -85,11 +79,12 @@
 						$loc = $row['loc']; 
 						echo '<option value="'.$loc.'">'.$loc.'</option>';
 					}
+					
 				?>
+				
 			 </select>	
-			 <button id="filterButton">Αναζήτηση</button>
 		</div>
-        <form name="form" action="submit.php" onsubmit="return validation()" method="post"> 
+        <form name="form" action="submit.php" onsubmit="return validation()" method="post">
 			<div id="noResults"> </div>
 			<?php
 				$sql = "SELECT id, fname, lname, exp, loc FROM docs";
@@ -119,5 +114,6 @@
         </form>
 		
 	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 	</body>
 </html>
