@@ -1,13 +1,13 @@
 <?php
 include "connect.php";
-session_start();
-$patid = $_SESSION['patid']; // $patid = get from login page
-$fetchPatData = 'SELECT fname FROM patients WHERE id='.$patid;
-$result = $conn->query($fetchPatData);
-$resultsFromDB = $result->fetch_all(MYSQLI_ASSOC);
-foreach ($resultsFromDB as $event) {
-    $name = $event['fname'];
-  }
+// session_start();
+// $patid = $_SESSION['patid']; // $patid = get from login page
+// $fetchPatData = 'SELECT fname FROM patients WHERE id='.$patid;
+// $result = $conn->query($fetchPatData);
+// $resultsFromDB = $result->fetch_all(MYSQLI_ASSOC);
+// foreach ($resultsFromDB as $event) {
+//     $name = $event['fname'];
+//   }
 ?>
 <!DOCTYPE html>
 <html>
@@ -58,13 +58,13 @@ foreach ($resultsFromDB as $event) {
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link active" aria-current="page" href="welcome.php">Αρχική</a>
-                    <a class="nav-item nav-link" href="showDocs.php">Προβολή γιατρών</a>
-                    <a class="nav-item nav-link" href="addAppointment.php">Προσθήκη ραντεβού</a>
+                    <a class="nav-item nav-link active" aria-current="page" href="main.php">Αρχική</a>
+                    <a class="nav-item nav-link" href="login_register.html">Προβολή γιατρών</a>
+                    <a class="nav-item nav-link" href="login_register.html">Προσθήκη ραντεβού</a>
                     <?php
-                        echo "<a class='nav-item nav-link' href='showAppointments.php'>Προβολή προσωπικών ραντεβού</a>"; 
+                        echo "<a class='nav-item nav-link' href='login_register.html'>Προβολή προσωπικών ραντεβού</a>"; 
                     ?>
-                    <a class="nav-item nav-link " href="login_register.html">Αποσύνδεση</a>
+                    <a class="nav-item nav-link " href="login_register.html">Σύνδεση</a>
                 </div>
             </div>
         </div>

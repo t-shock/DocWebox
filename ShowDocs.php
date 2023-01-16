@@ -44,8 +44,8 @@ include "connect.php";
 				}
 					echo "<a class='nav-item nav-link' href='showAppointments.php'>Προβολή προσωπικών ραντεβού</a>"; 
 				?>
-				<div class="nav-item nav-link disabled" id="welcome">Καλωσήρθατε <?php echo $name?>.    Δεν είστε ο <?php echo $name?>;</div>
-				<a class="nav-item nav-link" href="">Σύνδεση χρήστη</a>
+				<!-- <div class="nav-item nav-link disabled" id="welcome">Καλωσήρθατε <?php echo $name?>.    Δεν είστε ο <?php echo $name?>;</div> -->
+					<a class="nav-item nav-link " href="login_register.html">Αποσύνδεση</a>
 				</div>
 			</div>
 		</div>
