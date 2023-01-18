@@ -4,7 +4,7 @@
 	font-family: sans-serif;
 }
 body{
-	background-color: #ccc;
+	background-color: #FFF;
 }
 .Main{
 	height: 100%;
@@ -13,7 +13,7 @@ body{
 }
 .form-box{
 	width: 380px;
-	height: 480px;
+	height: 680px;
 	position: relative;
 	margin: 6% auto;
 	background: #fff;
