@@ -1,14 +1,10 @@
 <?php
-$servername = "localhost";
+$server = "localhost";
 $username = "root";
 $password = "";
-$databasename="doc";
-
-// Create connection
-$conn = mysqli_connect($servername, $username, $password,$databasename);
-
-// Check connection
-if (!$conn) {
-  die("Connection failed: " . mysqli_connect_error());
+$database = "docwebox";
+$conn = new mysqli($server, $username, $password, $database);
+if($conn->connect_error){
+    die("Connection faied: ". $conn->connect_error);
 }
 ?>

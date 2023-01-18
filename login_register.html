@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login and Registration form</title>
+	<link rel="stylesheet" href="stylesheet.css">
+	<meta charset="UTF-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+<body>
+	<script type="text/javascript" src="switches.js"></script>
+	<div class="Main">
+		<div class="form-box">
+			<div class="button-box">
+				<div id="btn"></div>
+				<button type="button" id="loginbtn" class="toggle-btn" onclick="login()">Login</button>
+				<button type="button" id="registerbtn" class="toggle-btn" onclick="register()">Register</button>
+			</div>
+	            <form method="POST" action="login.php" id="login" class="input-group">
+	        		<input type="text" id="username" class="input-field" name="username" placeholder="User/Doctor username" required>
+		    		<input type="password" id="password" class="input-field" name="password" placeholder="Password" required>
+		    		<input type="checkbox" class="check-box"><span>remember password</span>
+		    		<button type="submit" class="submit-btn" name="submit">Login</button>
+		    	</form>
+				
+				<form method="POST" action="register.php" id="register" class="input-group">
+					<h3>I'm a:</h3>
+					<select id="role" name="role" onchange="updateform()">
+						<option value="pat">Patient</option>
+						<option value="doc">Doctor</option>
+					</select>
+					
+					<div id="from" class="pat">
+						<!--<form method="POST" action="register.php" id="register" class="input-group">
+					
+							<input type="text" id="username" class="input-field" name="username" placeholder="User/Doctor username" required>
+							<input type="text" id="password" class="input-field" name ="password" placeholder="Password" required>
+							<input type="text" id="fname" class="input-field" name="fname" placeholder="First name" required>
+							<input type="text" id="lname" class="input-field" name="lname" placeholder="Last name" required>
+							<input type="checkbox1" class="check-box"><span>I Agree to The Term & Conditions</span>
+							<button type="submit1" class="submit-btn">Register</button>
+						</form>
+					</div>
+					<div class="doc" style="display:none">
+						<form method="POST" action="register.php" id="register" class="input-group">
+					
+							<input type="text" id="username" class="input-field" name="username" placeholder="User/Doctor username" required>
+							<input type="text" id="password" class="input-field" name ="password" placeholder="Password" required>
+							<input type="text" id="fname" class="input-field" name="fname" placeholder="First name" required>
+							<input type="text" id="lname" class="input-field" name="lname" placeholder="Last name" required>
+							<input type="text" id="prof" class="input-field" name="prof" placeholder="Profession" required>
+							<input type="text" id="address" class="input-field" name="address" placeholder="Address" required>
+							<input type="checkbox2" class="check-box"><span>I Agree to The Term & Conditions</span>
+							<button type="submit2" class="submit-btn">Register</button>
+						</form>
+					-->
+					</div> 
+				</form>
+
+		</div>
+	</div>
+	
+	
+	
+</body>
+
+</html>
