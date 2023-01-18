@@ -1,28 +1,25 @@
 <?php
 	include "connect.php";
-	
-	$docid = 2; // $docid = get from login page
-	//$fetchDocData = 'SELECT fname FROM docs WHERE id='.$docid;
-	//$result = $conn->query($fetchDocData);
-	//$resultsFromDB = $result->fetch_all(MYSQLI_ASSOC);
-	// ($resultsFromDB as $event) {
-	//    $name = $event['fname'];
-	//  }
 ?>
 
 <!DOCTYPE html>
 <html>
 	<head>
-		<style>
+	<style>
 			table, th, td {
 			border: 1px solid black;
 			}
+            .green-color {
+                color:green;
+            }
+		</style>
 		</style>
 		<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     
 	</head>
 	<body>
+	
 	<div class="container">
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container-fluid">
@@ -36,9 +33,8 @@
 				<?php
 				
 					session_start();
-					$_SESSION['docid'] = $docid;
 					$docid = $_SESSION['docid'];
-					$fetchDocData = 'SELECT fname FROM docs WHERE id='.$docid;
+					$fetchDocData = 'SELECT fname FROM docs WHERE id= '.$docid;
 					$result = $conn->query($fetchDocData);
 					$resultsFromDB = $result->fetch_all(MYSQLI_ASSOC);
 					
@@ -55,7 +51,7 @@
 					}
 				?>
 				
-				<div class="nav-item nav-link disabled" id="welcome">Καλωσήρθατε Dr. <?php echo $name?>.    Δεν είστε ο Dr. <?php echo $name?>;</div>
+				<div class="nav-item nav-link disabled" id="welcome">Καλωσήρθατε Dr. <?php echo $name?></div>
 				<a class="nav-item nav-link " href="welcomeDoc.php">Αρχική</a>
 				<a class='nav-item nav-link active' aria-current='page' href='DocAppointments.php'>Προβολή προσωπικών ραντεβού</a>
 				<a class="nav-item nav-link " href="DocProfUpdFrontFreeze.php">Προβολή Προφίλ</a>
@@ -66,6 +62,7 @@
     </nav>
 
 	<br/>
+	<center>
 		<div class='table-responsive'>
 		<table class="table table bordered">
 		
@@ -96,7 +93,9 @@
 		?>
 		
 		</div>
-		</div>
+	</div>
+	</center>	
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+	
 	</body>
 </html>

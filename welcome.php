@@ -39,7 +39,6 @@ foreach ($resultsFromDB as $event) {
 				}
 				else{
 					load_data();
-					//$('#showdata').css('display','none');
 				}
 				});
 		});

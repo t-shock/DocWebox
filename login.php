@@ -4,7 +4,6 @@ include ('connect.php');
 
 
 if(isset($_POST['submit'])){
-    //require_once "validate.php";
     $username = $_POST['username'];
     $password = $_POST['password'];
     $sql = "select * from credentinals where username='$username' and password='$password'";
@@ -15,12 +14,13 @@ if(isset($_POST['submit'])){
         $row = mysqli_fetch_array($result);
         echo $row['role'];
         if ($row['role'] === 'pat') {
-            echo "1234";
             $_SESSION['patid'] = $row['id_role'];
             header("Location: welcome.php");
             exit();
         }else{
-            
+            $_SESSION['docid'] = $row['id_role'];
+            header("Location: welcomeDoc.php");
+            exit();
         }
     } else{
         

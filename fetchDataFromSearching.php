@@ -1,7 +1,6 @@
 <?php
 include "connect.php";
 
-//echo 'test';
 $output = '';
 if(isset($_POST["input"])){
 	

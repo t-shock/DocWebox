@@ -106,12 +106,13 @@
 			
 			<input type="date" id="date" name="date" max="2030-12-31" required>
             <input type="time" id="appt" name="appt"  min="09:00" max="19:00" value="09:00" step="3600" required>
-			<p>Ώρες εργασίας: 09:00-19:00</p>
+			<p>Ώρες εργασίας: 09:00-20:00</p>
 			<p>Παρακαλούμε επιλέξτε ραντεβού ανά ώρα</p>
 			<br>
             <input type="submit" name="submit" value="Επικύρωση">
+			
         </form>
-		
+
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 	</body>

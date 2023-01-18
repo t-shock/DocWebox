@@ -1,7 +1,6 @@
 <?php
 	include "connect.php";
 	session_start();
-	$docid = 2; // $docid = get from login page
 	$docid = $_SESSION['docid'];
 	
 	$fname = $_POST['fname'];
@@ -28,13 +27,7 @@
 	if(isset($_POST['loc']) && $_POST['loc'] != ""){
 		$sql = mysqli_query($conn,"UPDATE `docs` SET `loc` = '".$loc."' WHERE docs.id =" .$docid);
 	}
-	
-	/*
-	$tel = $_POST['tel'];
-	if(isset($_POST['tel']) && $_POST['tel'] != ""){
-		$sql = mysqli_query($conn,"UPDATE `docs` SET `tel` = '".$tel."' WHERE docs.id =" .$docid);
-	}
-	*/
+
 	header("Location: DocProfUpdFrontFreeze.php");
 
 ?>

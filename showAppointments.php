@@ -64,11 +64,12 @@ include "connect.php";
 		<br/>
 		<div class='table-responsive'>
 		<table class="table table bordered">
+		<center>
 			<?php
 				$sql = "SELECT id,id_doc, DATE_FORMAT(time, '%H:%i') AS time, date FROM calendar WHERE id_pat = $patid";
 				$result = $conn->query($sql);
 				if ($result->num_rows > 0) {
-					echo "<table class='table table bordered'><tr><th>Όνομα</th><th>Ώρα</th><th>Ημερομινία</th><th>Διαγραφή ραντεβού</th></tr>";
+					echo "<table class='table table bordered'><tr><th>Όνομα</th><th>Ώρα</th><th>Ημερομηνία</th><th>Διαγραφή ραντεβού</th></tr>";
 				// output data of each row
 					while($row = $result->fetch_assoc()) {
 						$num = $row["id"];
@@ -84,12 +85,17 @@ include "connect.php";
 					}
 					echo "</table>"; 
 				} else {
+					
 					echo "Δεν Έχετε Προγραμματίσει Κανένα Ραντεβού";
 				}
 				$conn->close();
 		?>
+		</center>
 		</div>
 		</div>
+		<center>
+		<a href='deleteProfilePat.php' id="delete"><button class='btn btn-danger' onclick="return confirm('Θέλετε σίγουρα να διαγράψετε τον λογαριασμό σας;');">Διαγραφή λογαριασμού</button></a>
+		</center>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 		</body>
 </html>
