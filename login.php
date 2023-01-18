@@ -24,7 +24,7 @@ if(isset($_POST['submit'])){
         }
     } else{
         
-        echo "<script> alert ('Wrong username or password');</script>";
+        echo "<script> alert ('Λάθος username ή κωδικός πρόσβασης');</script>";
         echo "<script>
         window.setTimeout(function() {
             window.location = 'login_register.html';
@@ -33,7 +33,7 @@ if(isset($_POST['submit'])){
     }
 }
 else{
-    echo "something went wrong";
+    echo "Κάτι πήγε λάθος!";
 }
 
 
