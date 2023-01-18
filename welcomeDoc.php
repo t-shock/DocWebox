@@ -75,13 +75,14 @@
 	
 		<?php 
 		
-			$sql = 'SELECT id_doc, time, date FROM calendar WHERE id_doc =' .$docid;
+			$sql = 'SELECT id_doc, date, DATE_FORMAT(time, "%H:%i") AS time FROM calendar WHERE id_doc =' .$docid;
 			$result = $conn->query($sql);
 				if ($result->num_rows > 0) {
 				// output data of each row
 				
 					while($row = $result->fetch_assoc()) {
 						$calendar->add_event('Ραντεβού', $row["date"]);
+						$calendar->add_event($row["time"], $row["date"], 1 ,'red');
 					}
 				}
 			
