@@ -4,10 +4,10 @@
 	include "Calendar.php";
 	$calendar = new Calendar();
 	
-	session_start();
+	//session_start();
 	//$_SESSION['docid'] = $docid;
 	$docid = 1; // $docid = get from login page
-	$docid = $_SESSION['docid'];
+	//$docid = $_SESSION['docid'];
 	
  ?> 
  
@@ -63,7 +63,7 @@
 				<div class="nav-item nav-link disabled" id="welcome">Καλωσήρθατε Dr. <?php echo $name?>.</div>
 				<a class='nav-item nav-link active' aria-current='page' href="welcomeDoc.php">Αρχική</a>
 				<a class="nav-item nav-link " href="DocAppointments.php">Προβολή προσωπικών ραντεβού</a>
-				<a class="nav-item nav-link " href="DocProfUpdFront.php">Προβολή Προφίλ</a>
+				<a class="nav-item nav-link " href="DocProfUpdFrontFreeze.php">Προβολή Προφίλ</a>
 				<a class="nav-item nav-link" href="login_register.html">Αποσύνδεση χρήστη</a>
 				</div>
 			</div>
@@ -81,7 +81,6 @@
 				// output data of each row
 				
 					while($row = $result->fetch_assoc()) {
-						echo $docid;
 						$calendar->add_event('Ραντεβού', $row["date"]);
 					}
 				}

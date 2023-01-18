@@ -58,7 +58,7 @@
 				<div class="nav-item nav-link disabled" id="welcome">Καλωσήρθατε Dr. <?php echo $name?>.    Δεν είστε ο Dr. <?php echo $name?>;</div>
 				<a class="nav-item nav-link " href="welcomeDoc.php">Αρχική</a>
 				<a class='nav-item nav-link active' aria-current='page' href='DocAppointments.php'>Προβολή προσωπικών ραντεβού</a>
-				<a class="nav-item nav-link " href="DocProfUpdFront.php">Προβολή Προφίλ</a>
+				<a class="nav-item nav-link " href="DocProfUpdFrontFreeze.php">Προβολή Προφίλ</a>
 				<a class="nav-item nav-link" href="login_register.html">Αποσύνδεση χρήστη</a>
 				</div>
 			</div>

@@ -70,7 +70,7 @@
 				<div class="nav-item nav-link disabled" id="welcome">Καλωσήρθατε Dr. <?php echo $name?>.</div>
 				<a class="nav-item nav-link " href="welcomeDoc.php">Αρχική</a>
 				<a class="nav-item nav-link " href="DocAppointments.php">Προβολή προσωπικών ραντεβού</a>
-				<a class='nav-item nav-link active' aria-current='page' href="DocProfUpdFront.php">Προβολή Προφίλ</a>
+				<a class='nav-item nav-link active' aria-current='page' href="DocProfUpdFrontFreeze.php">Προβολή Προφίλ</a>
 				<a class="nav-item nav-link" href="login_register.html">Αποσύνδεση χρήστη</a>
 				</div>
 			</div>
