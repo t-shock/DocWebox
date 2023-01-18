@@ -12,21 +12,21 @@
 		<div class="form-box">
 			<div class="button-box">
 				<div id="btn"></div>
-				<button type="button" id="loginbtn" class="toggle-btn" onclick="login()">Login</button>
-				<button type="button" id="registerbtn" class="toggle-btn" onclick="register()">Register</button>
+				<button type="button" id="loginbtn" class="toggle-btn" onclick="login()" style="color:white; font-size: 12px;">Σύνδεση</button>
+				<button type="button" id="registerbtn" class="toggle-btn" onclick="register()" style="font-size: 12px;">Εγγραφή</button>
 			</div>
 	            <form method="POST" action="login.php" id="login" class="input-group">
-	        		<input type="text" id="username" class="input-field" name="username" placeholder="User/Doctor username" required>
-		    		<input type="password" id="password" class="input-field" name="password" placeholder="Password" required>
-		    		<input type="checkbox" class="check-box"><span>remember password</span>
-		    		<button type="submit" class="submit-btn" name="submit">Login</button>
+	        		<input type="text" id="username" class="input-field" name="username" placeholder="Username ασθενή/ιατρού" required>
+		    		<input type="password" id="password" class="input-field" name="password" placeholder="Κωδικός πρόσβασης" required>
+		    		<input type="checkbox" class="check-box"><span>Να με θυμάσαι</span>
+		    		<button type="submit" class="submit-btn" name="submit">Σύνδεση</button>
 		    	</form>
 				
 				<form method="POST" action="register.php" id="register" class="input-group">
-					<h3>I'm a:</h3>
+					<h3>Είμαι:</h3>
 					<select id="role" name="role" onchange="updateform()">
-						<option value="pat">Patient</option>
-						<option value="doc">Doctor</option>
+						<option value="pat">Ασθενής</option>
+						<option value="doc">Ιατρός</option>
 					</select>
 					
 					<div id="from" class="pat">

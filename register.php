@@ -12,7 +12,7 @@ if(isset($_POST['submit1'])){
     $sql = "insert into patients values('', '$fname', '$lname')";
     if(!$conn->query($sql)){
         echo "failure when adding patient";
-        echo "<script> alert ('Something went wrong');</script>";
+        echo "<script> alert ('Κάτι πήγε λάθος!');</script>";
         echo "<script>
         window.setTimeout(function() {
             window.location = 'login_register.html';
@@ -35,14 +35,14 @@ if(isset($_POST['submit1'])){
 
     if(!$conn->query($sql)){
         echo "failure when adding patient to credentinals";
-        echo "<script> alert ('Something went wrong');</script>";
+        echo "<script> alert ('Κάτι πήγε λάθος');</script>";
         echo "<script>
         window.setTimeout(function() {
             window.location = 'login_register.html';
           });
         </script>";
     } else {
-        echo "<script> alert ('Successful registration! You can now log-in!');</script>";
+        echo "<script> alert ('Επιτυχής εγγραφή! Μπορείτε τώρα να συνδεθείτε!');</script>";
         echo "<script>
         window.setTimeout(function() {
             window.location = 'login_register.html';
@@ -77,14 +77,14 @@ else if(isset($_POST['submit2'])){
     $sql = "insert into credentinals values('','doc','$username','$password','$id')";
     if(!$conn->query($sql)){
         echo "failure when adding doc to credentinals";
-        echo "<script> alert ('Something went wrong');</script>";
+        echo "<script> alert ('Κάτι πήγε λάθος!');</script>";
         echo "<script>
         window.setTimeout(function() {
             window.location = 'login_register.html';
           });
         </script>";
     } else {
-        echo "<script> alert ('Successful registration! You can now log-in!');</script>";
+        echo "<script> alert ('Επιτυχής εγγραφή! Μπορείτε τώρα να συνδεθείτε!');</script>";
         echo "<script>
         window.setTimeout(function() {
             window.location = 'login_register.html';
